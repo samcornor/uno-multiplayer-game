@@ -10,48 +10,48 @@
     --bg-secondary: #12121a;
     --bg-card: #1a1a25;
     --bg-overlay: rgba(10, 10, 15, 0.95);
-    
+
     /* Text Colors */
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
     --text-muted: #606070;
-    
+
     /* UNO Card Colors */
     --uno-red: #e53935;
     --uno-yellow: #fdd835;
     --uno-green: #43a047;
     --uno-blue: #1e88e5;
     --uno-black: #1a1a1a;
-    
+
     /* Accent Colors */
     --accent-primary: #8b5cf6;
     --accent-secondary: #06b6d4;
     --accent-success: #10b981;
     --accent-warning: #f59e0b;
     --accent-danger: #ef4444;
-    
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #8b5cf6, #06b6d4);
     --gradient-danger: linear-gradient(135deg, #ef4444, #f59e0b);
     --gradient-success: linear-gradient(135deg, #10b981, #06b6d4);
-    
+
     /* Card Dimensions */
     --card-width: 70px;
     --card-height: 100px;
     --card-radius: 10px;
-    
+
     /* Spacing */
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 32px;
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-medium: 300ms ease;
     --transition-slow: 500ms ease;
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -60,13 +60,16 @@
 }
 
 /* ============ Reset & Base ============ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     overflow: hidden;
 }
@@ -126,8 +129,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .loading-spinner {
@@ -141,7 +151,9 @@ body {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ============ Menu Screen ============ */
@@ -428,6 +440,8 @@ body {
     display: none;
     flex-direction: column;
     background: radial-gradient(ellipse at center, #1a1e2e 0%, var(--bg-primary) 100%);
+    position: relative;
+    /* Required for overlay positioning */
 }
 
 #game-screen.active {
@@ -471,8 +485,15 @@ body {
 }
 
 @keyframes catchPulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+    }
 }
 
 .opponent-name {
@@ -519,8 +540,15 @@ body {
 }
 
 @keyframes unoPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .catch-btn {
@@ -563,10 +591,21 @@ body {
     transition: var(--transition-fast);
 }
 
-.color-indicator.red { background: var(--uno-red); }
-.color-indicator.yellow { background: var(--uno-yellow); }
-.color-indicator.green { background: var(--uno-green); }
-.color-indicator.blue { background: var(--uno-blue); }
+.color-indicator.red {
+    background: var(--uno-red);
+}
+
+.color-indicator.yellow {
+    background: var(--uno-yellow);
+}
+
+.color-indicator.green {
+    background: var(--uno-green);
+}
+
+.color-indicator.blue {
+    background: var(--uno-blue);
+}
 
 .turn-indicator {
     display: flex;
@@ -594,8 +633,15 @@ body {
 }
 
 @keyframes stackPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .center-cards {
@@ -684,8 +730,15 @@ body {
 }
 
 @keyframes unoBtnPulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-    50% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
+    }
 }
 
 .player-hand {
@@ -763,12 +816,12 @@ body {
 }
 
 .card.wild {
-    background: linear-gradient(135deg, 
-        var(--uno-red) 0%, 
-        var(--uno-yellow) 25%, 
-        var(--uno-green) 50%, 
-        var(--uno-blue) 75%,
-        var(--uno-red) 100%);
+    background: linear-gradient(135deg,
+            var(--uno-red) 0%,
+            var(--uno-yellow) 25%,
+            var(--uno-green) 50%,
+            var(--uno-blue) 75%,
+            var(--uno-red) 100%);
     border: 3px solid #fff;
 }
 
@@ -807,8 +860,14 @@ body {
 }
 
 @keyframes playCard {
-    0% { transform: translateY(0) scale(1); }
-    100% { transform: translateY(-100px) scale(0.8); opacity: 0; }
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+    }
 }
 
 .card.drawing {
@@ -816,8 +875,15 @@ body {
 }
 
 @keyframes drawCard {
-    0% { transform: translateY(-50px) scale(0.8); opacity: 0; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
+    0% {
+        transform: translateY(-50px) scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 /* Discard pile card (larger) */
@@ -883,13 +949,25 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-.color-red { background: var(--uno-red); }
-.color-yellow { background: var(--uno-yellow); }
-.color-green { background: var(--uno-green); }
-.color-blue { background: var(--uno-blue); }
+.color-red {
+    background: var(--uno-red);
+}
+
+.color-yellow {
+    background: var(--uno-yellow);
+}
+
+.color-green {
+    background: var(--uno-green);
+}
+
+.color-blue {
+    background: var(--uno-blue);
+}
 
 /* Round/Game End Panels */
-.round-winner, .game-winner {
+.round-winner,
+.game-winner {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: var(--space-lg);
@@ -899,7 +977,8 @@ body {
     background-clip: text;
 }
 
-.round-scores, .final-scores {
+.round-scores,
+.final-scores {
     margin-bottom: var(--space-lg);
 }
 
@@ -964,12 +1043,22 @@ body {
 }
 
 @keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    to { opacity: 0; transform: translateY(-10px); }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
 
 /* ============ Mobile Responsive ============ */
@@ -987,7 +1076,8 @@ body {
         font-size: 3.5rem;
     }
 
-    .menu-container, .lobby-container {
+    .menu-container,
+    .lobby-container {
         padding: var(--space-lg);
     }
 
@@ -1082,7 +1172,10 @@ body {
 
 /* ============ Accessibility ============ */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
