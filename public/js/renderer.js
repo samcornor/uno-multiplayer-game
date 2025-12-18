@@ -137,6 +137,10 @@ const Renderer = {
             if (card.type === 'reverse') {
                 return true;
             }
+            // Skip can pass the stack to next player
+            if (card.type === 'skip') {
+                return true;
+            }
             return false;
         }
 

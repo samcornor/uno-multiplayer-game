@@ -19,7 +19,7 @@ function canPlayCard(card, state) {
     const topCard = state.discardPile[state.discardPile.length - 1];
     const currentColor = state.currentColor;
 
-    // If there's an active stack, only matching stack cards OR Reverse can be played
+    // If there's an active stack, only matching stack cards, Reverse, or Skip can be played
     if (state.stackedDrawCount > 0) {
         // Can stack matching draw cards
         if (state.stackType === 'drawTwo' && card.type === 'drawTwo') {
@@ -32,9 +32,13 @@ function canPlayCard(card, state) {
         if (card.type === 'reverse') {
             return { canPlay: true, reason: null };
         }
+        // Can play Skip to pass the stack to the next player
+        if (card.type === 'skip') {
+            return { canPlay: true, reason: null };
+        }
         return {
             canPlay: false,
-            reason: `You must play a ${state.stackType === 'drawTwo' ? 'Draw Two' : 'Wild Draw Four'}, Reverse, or draw ${state.stackedDrawCount} cards`
+            reason: `You must play a ${state.stackType === 'drawTwo' ? 'Draw Two' : 'Wild Draw Four'}, Reverse, Skip, or draw ${state.stackedDrawCount} cards`
         };
     }
 
