@@ -145,7 +145,43 @@ function playCard(state, playerId, cardId, chosenColor = null) {
     // Remove card from hand
     player.hand.splice(cardIndex, 1);
 
-    // Apply card effect
+    // Check if we need color choice BEFORE applying effects (for wild cards without color)
+    if (card.isWild() && !chosenColor) {
+        // Add card to discard pile but don't apply full effects yet
+        state.discardPile.push(card);
+        state.awaitingColorChoice = true;
+
+        // For Wild Draw Four, set up the stack NOW
+        if (card.type === 'wildDrawFour') {
+            state.stackedDrawCount += 4;
+            state.stackType = 'drawFour';
+        }
+
+        state.lastAction = {
+            type: 'playCard',
+            playerId: player.id,
+            playerName: player.name,
+            card: card.toJSON(),
+            message: `${player.name} played ${formatCard(card)} - choosing color...`
+        };
+
+        // Check for round win
+        if (player.hand.length === 0) {
+            return endRound(state, playerIndex);
+        }
+
+        // Set UNO catch window if applicable
+        if (player.hand.length === 1 && !player.calledUno) {
+            state.unoCallWindow = {
+                playerId: player.id,
+                expiresAt: Date.now() + 3000
+            };
+        }
+
+        return { success: true, state, error: null };
+    }
+
+    // Apply card effect (for non-wild cards, or wild cards WITH color already chosen)
     try {
         applyCardEffect(card, state, chosenColor);
     } catch (e) {
@@ -167,19 +203,6 @@ function playCard(state, playerId, cardId, chosenColor = null) {
         };
     } else {
         state.unoCallWindow = null;
-    }
-
-    // Check if we need color choice (for wild cards without color specified)
-    if (card.isWild() && !chosenColor) {
-        state.awaitingColorChoice = true;
-        state.lastAction = {
-            type: 'playCard',
-            playerId: player.id,
-            playerName: player.name,
-            card: card.toJSON(),
-            message: `${player.name} played ${formatCard(card)} - choosing color...`
-        };
-        return { success: true, state, error: null };
     }
 
     state.lastAction = {
