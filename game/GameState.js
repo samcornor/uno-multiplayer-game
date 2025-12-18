@@ -554,7 +554,18 @@ function handleReconnect(state, oldPlayerId, newPlayerId) {
  */
 function getStateForPlayer(state, playerId) {
     return {
-        ...state,
+        roomCode: state.roomCode,
+        phase: state.phase,
+        currentPlayerIndex: state.currentPlayerIndex,
+        direction: state.direction,
+        currentColor: state.currentColor,
+        stackedDrawCount: state.stackedDrawCount,
+        stackType: state.stackType,
+        awaitingColorChoice: state.awaitingColorChoice,
+        unoCallWindow: state.unoCallWindow,
+        hostId: state.hostId,
+        roundNumber: state.roundNumber,
+        lastAction: state.lastAction,
         drawPile: { count: state.drawPile.length }, // Only send count
         players: state.players.map(p => ({
             id: p.id,
