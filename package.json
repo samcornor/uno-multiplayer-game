@@ -1,0 +1,23 @@
+{
+    "name": "uno-multiplayer",
+    "version": "1.0.0",
+    "description": "Real-time multiplayer UNO game with official rules",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "uno",
+        "multiplayer",
+        "card-game",
+        "websocket"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.7.2",
+        "uuid": "^9.0.0"
+    }
+}
