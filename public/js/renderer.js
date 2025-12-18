@@ -133,6 +133,10 @@ const Renderer = {
             if (state.stackType === 'drawFour' && card.type === 'wildDrawFour') {
                 return true;
             }
+            // Reverse can deflect the stack
+            if (card.type === 'reverse') {
+                return true;
+            }
             return false;
         }
 

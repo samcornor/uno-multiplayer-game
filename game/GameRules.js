@@ -19,17 +19,22 @@ function canPlayCard(card, state) {
     const topCard = state.discardPile[state.discardPile.length - 1];
     const currentColor = state.currentColor;
 
-    // If there's an active stack, only matching stack cards can be played
+    // If there's an active stack, only matching stack cards OR Reverse can be played
     if (state.stackedDrawCount > 0) {
+        // Can stack matching draw cards
         if (state.stackType === 'drawTwo' && card.type === 'drawTwo') {
             return { canPlay: true, reason: null };
         }
         if (state.stackType === 'drawFour' && card.type === 'wildDrawFour') {
             return { canPlay: true, reason: null };
         }
+        // Can play Reverse to deflect the stack back to previous player
+        if (card.type === 'reverse') {
+            return { canPlay: true, reason: null };
+        }
         return {
             canPlay: false,
-            reason: `You must play a ${state.stackType === 'drawTwo' ? 'Draw Two' : 'Wild Draw Four'} or draw ${state.stackedDrawCount} cards`
+            reason: `You must play a ${state.stackType === 'drawTwo' ? 'Draw Two' : 'Wild Draw Four'}, Reverse, or draw ${state.stackedDrawCount} cards`
         };
     }
 
