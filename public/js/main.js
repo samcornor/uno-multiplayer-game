@@ -14,12 +14,14 @@ const App = {
         // Connect to Socket.IO server
         // Use polling transport for better compatibility with tunnels/proxies
         this.socket = io({
-            transports: ['polling', 'websocket'], // Start with polling, upgrade to websocket
+            transports: ['polling', 'websocket'],
             upgrade: true,
             reconnection: true,
-            reconnectionAttempts: 10,
+            reconnectionAttempts: 20,
             reconnectionDelay: 1000,
-            timeout: 20000
+            reconnectionDelayMax: 5000,
+            timeout: 60000,
+            forceNew: false
         });
 
         // Initialize UI modules

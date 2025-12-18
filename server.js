@@ -31,8 +31,18 @@ const server = createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "*",
-        methods: ["GET", "POST"]
-    }
+        methods: ["GET", "POST"],
+        credentials: true
+    },
+    // Allow both transports, let client choose
+    transports: ['polling', 'websocket'],
+    // Increase timeouts for slower connections
+    pingTimeout: 60000,
+    pingInterval: 25000,
+    // Allow upgrades from polling to websocket
+    allowUpgrades: true,
+    // Increase max payload for game state
+    maxHttpBufferSize: 1e6
 });
 
 // Serve static files from public directory
